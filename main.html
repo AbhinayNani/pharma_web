@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="mt-4 text-center">
+      <button type="button" class="btn" id="openModalBtn">Give Review</button>
+    </div>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" id="closeModalBtn">&times;</span>
+          <h2 id="modalTitle">New Review</h2>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="form-label">Recipient:</label>
+              <input type="text" class="form-control" id="recipient-name" />
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="form-label">Review:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" id="submitReviewBtn">
+            Submit Review
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      /* Modal container */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      /* Modal content */
+      .modal-content {
+        background-color: white;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 500px;
+      }
+
+      /* Modal header */
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Close button */
+      .close {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      /* Button styles */
+      .btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      /* Form group styles */
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var modal = document.getElementById("myModal");
+        var openModalBtn = document.getElementById("openModalBtn");
+        var closeModalBtn = document.getElementById("closeModalBtn");
+        var submitReviewBtn = document.getElementById("submitReviewBtn");
+        var modalTitle = document.getElementById("modalTitle");
+        var recipientInput = document.getElementById("recipient-name");
+
+        openModalBtn.addEventListener("click", function () {
+          modal.style.display = "block";
+          modalTitle.textContent = "New Review";
+          recipientInput.value = "@review";
+        });
+
+        closeModalBtn.addEventListener("click", function () {
+          modal.style.display = "none";
+        });
+
+        submitReviewBtn.addEventListener("click", function () {
+          // You can add form submission logic here
+          alert("Review submitted");
+          modal.style.display = "none";
+        });
+
+        window.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
